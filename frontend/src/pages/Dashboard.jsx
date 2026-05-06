@@ -14,8 +14,8 @@ export default function Dashboard() {
 
   const fetchDashboard = async () => {
     try {
-      // const res = await getDashboard();
-      // setData(res.data);
+      const res = await getDashboard();
+      setData(res.data);
     } catch (err) {
       console.error(err);
     } finally {

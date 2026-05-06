@@ -81,8 +81,12 @@ const addMember = async (req, res) => {
       project.members.push(userId);
       await project.save();
     }
-    
-    res.json({ message: 'Member added successfully', project });
+
+    const populatedProject = await Project.findById(project._id)
+      .populate('createdBy', 'name email')
+      .populate('members', 'name email');
+
+    res.json({ message: 'Member added successfully', project: populatedProject });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

@@ -15,8 +15,9 @@ app.use(cors({
     origin: process.env.ALLOW_ORIGIN
 }));
 
-// routes -> auth, projects, tasks 
+// routes -> auth, users, projects, tasks 
 app.use('/api/auth', require('./routes/authRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 app.use('/api/projects', require('./routes/projectRoutes'));
 app.use('/api/tasks', require('./routes/taskRoutes'));
 

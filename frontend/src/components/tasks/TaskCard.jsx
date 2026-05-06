@@ -28,7 +28,7 @@ export default function TaskCard({ task, onTaskUpdate }) {
     }
   };
 
-  const canUpdateStatus = user?.role === 'admin' || task.assignedTo?._id === user?.id;
+  const canUpdateStatus = task.assignedTo?._id === user?.id;
 
   return (
     <div className="border rounded p-3 mb-2 bg-white">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getProjectById, addMember } from '../api/projectApi';
+import { getProjectById, getUserByEmail, addMember } from '../api/projectApi';
 import { createTask, getTasksByProject } from '../api/taskApi';
 import { useAuth } from '../context/AuthContext';
 import TaskList from '../components/tasks/TaskList';
@@ -59,12 +59,22 @@ export default function ProjectDetail() {
 
   const handleAddMember = async (e) => {
     e.preventDefault();
+    if (!memberEmail.trim()) {
+      toast.error('Please enter an email');
+      return;
+    }
+
     try {
-      // Note: This would need a backend endpoint to get user by email
-      // For now, just show a message
-      toast.error('Add member by user ID (check backend endpoint)');
+      const userRes = await getUserByEmail(memberEmail.trim());
+      const user = userRes.data;
+      const res = await addMember(id, user._id);
+
+      setProject(res.data.project);
+      setMemberEmail('');
+      toast.success('Member added successfully');
     } catch (err) {
-      toast.error('Failed to add member');
+      const message = err?.response?.data?.message || 'Failed to add member';
+      toast.error(message);
     }
   };
 
