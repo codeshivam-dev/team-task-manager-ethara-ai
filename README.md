@@ -3,12 +3,11 @@
 A full-stack task management application with role-based access control (Admin/Member). Built with MERN stack.
 
 ## Live Demo
-
-[Add your Railway URL here]
+https://team-task-manager-ethara-ai-wine.vercel.app
 
 ## Demo Video
 
-[Add your video link here]
+https://youtu.be/3-CkDeVHK54
 
 ## Features
 
