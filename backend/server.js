@@ -10,9 +10,16 @@ connectDB();
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ 
-    credentials: true, 
-    origin: process.env.ALLOW_ORIGIN
+const allowedOrigins = process.env.ALLOW_ORIGIN ? process.env.ALLOW_ORIGIN.split(',') : [];
+app.use(cors({
+    credentials: true,
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error(`CORS origin denied: ${origin}`));
+        }
+    }
 }));
 
 // routes -> auth, users, projects, tasks 

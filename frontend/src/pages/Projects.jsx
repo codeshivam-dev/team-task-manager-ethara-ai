@@ -21,7 +21,8 @@ export default function Projects() {
       const res = await getProjects();
       setProjects(res.data);
     } catch (err) {
-      toast.error('Failed to load projects');
+      console.error('Failed to load projects', err);
+      toast.error(err.response?.data?.message || 'Failed to load projects');
     } finally {
       setLoading(false);
     }
@@ -34,7 +35,8 @@ export default function Projects() {
       setShowForm(false);
       toast.success('Project created');
     } catch (err) {
-      toast.error('Failed to create project');
+      console.error('Failed to create project', err);
+      toast.error(err.response?.data?.message || 'Failed to create project');
     }
   };
 
