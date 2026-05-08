@@ -54,7 +54,7 @@ const updateTaskStatus = async (req, res) => {
     if (!canUpdate) {
       return res.status(403).json({ message: 'You cannot update this task' });
     }
-    
+    console.log("Updated")
     task.status = status;
     await task.save();
     

@@ -28,7 +28,9 @@ export default function TaskCard({ task, onTaskUpdate }) {
     }
   };
 
-  const canUpdateStatus = task.assignedTo?._id === user?.id;
+  const canUpdateStatus = task.assignedTo?._id === user?._id;
+  // console.log("Bhai ye task : ", task);
+  // console.log("Bhai user : ", user)
 
   return (
     <div className="border rounded p-3 mb-2 bg-white">

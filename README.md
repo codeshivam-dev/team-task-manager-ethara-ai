@@ -7,7 +7,7 @@ https://team-task-manager-ethara-ai-wine.vercel.app
 
 ## Demo Video
 
-https://youtu.be/3-CkDeVHK54
+https://youtu.be/usaB2qI1G1k
 
 ## Features
 
